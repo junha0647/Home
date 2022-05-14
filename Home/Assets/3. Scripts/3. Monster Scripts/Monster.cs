@@ -11,7 +11,7 @@ public class Monster : MonoBehaviour
     SpriteRenderer spriteRenderer;
 
     [Header("추격 속도")]
-    [SerializeField][Range(1f, 4f)] float moveSpeed = 1f;
+    [SerializeField][Range(1f, 8f)] float moveSpeed = 1f;
 
     [Header("근접 거리")]
     [SerializeField][Range(0f, 3f)] float contactDistance = 1f;
