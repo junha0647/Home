@@ -46,7 +46,7 @@ public class Monster : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
             anim.SetBool("IsWalking", true);
         }
-        else if(follow == false)
+        if(follow == false)
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, -moveSpeed * Time.deltaTime * 5);
             //anim.SetBool("IsWalking", true);

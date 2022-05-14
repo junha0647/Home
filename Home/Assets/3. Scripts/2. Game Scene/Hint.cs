@@ -14,6 +14,11 @@ public class Hint : MonoBehaviour
     [Tooltip("_Sound 오브젝트 받아오기")]
     [SerializeField] private SoundManager soundManager;
 
+    [Tooltip("Arrow 오브젝트 받아오기")]
+    [SerializeField] private GameObject Arrow;
+    [Tooltip("아이 오브젝트 받아오기")]
+    [SerializeField] private GameObject obj;
+
     public void getHint()
     {
         soundManager.PlaySound("Item");
@@ -62,7 +67,8 @@ public class Hint : MonoBehaviour
 
             case 10:
                 UIHint[HintValue - 1].SetActive(true);
-                // 플레이어 머리 위에 아이를 가리키는 화살표 생성
+                Arrow.SetActive(true);
+                obj.SetActive(true);
                 break;
         }
     }
