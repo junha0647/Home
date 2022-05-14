@@ -3067,6 +3067,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1676506768, guid: 3deafdd63d4046c47b32ba3b2c275807, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1676506768, guid: 3deafdd63d4046c47b32ba3b2c275807, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2867970485240184682, guid: 3deafdd63d4046c47b32ba3b2c275807, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2867970485240184682, guid: 3deafdd63d4046c47b32ba3b2c275807, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2867970485737880945, guid: 3deafdd63d4046c47b32ba3b2c275807, type: 3}
       propertyPath: hp
       value: 
@@ -3075,6 +3091,10 @@ PrefabInstance:
       propertyPath: hint
       value: 
       objectReference: {fileID: 559076133}
+    - target: {fileID: 2867970485737880946, guid: 3deafdd63d4046c47b32ba3b2c275807, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2867970485737880947, guid: 3deafdd63d4046c47b32ba3b2c275807, type: 3}
       propertyPath: m_RootOrder
       value: 1
