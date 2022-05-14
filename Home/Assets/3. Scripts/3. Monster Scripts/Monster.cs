@@ -9,6 +9,7 @@ public class Monster : MonoBehaviour
     Transform target;
     Animator anim;
     SpriteRenderer spriteRenderer;
+    
 
     [Header("추격 속도")]
     [SerializeField][Range(1f, 8f)] float moveSpeed = 1f;
@@ -26,6 +27,7 @@ public class Monster : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        
     }
 
     // Update is called once per frame
@@ -67,14 +69,19 @@ public class Monster : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        follow = true;
-        anim.SetBool("IsWalking", true);
-
+        if (collision.gameObject.tag == "Player")
+        {
+            follow = true;
+            anim.SetBool("IsWalking", true);
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        follow = false;
-        anim.SetBool("IsWalking", false);
+        if (collision.gameObject.tag == "Player")
+        {
+            follow = false;
+            anim.SetBool("IsWalking", false);
+        }
     }
 }

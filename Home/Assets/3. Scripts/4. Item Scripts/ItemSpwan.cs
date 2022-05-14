@@ -75,8 +75,8 @@ public class ItemSpwan : MonoBehaviour
         
         Vector2 size = area.size;
 
-        float posX = basePosition.x + Random.Range(-10f, 10f);
-        float posY = basePosition.y + Random.Range(-10f, 10f);
+        float posX = basePosition.x + Random.Range(-30f, 30f);
+        float posY = basePosition.y + Random.Range(-30f, 30f);
 
         Vector2 spawnPos = new Vector2(posX, posY);
         basePosition = spawnPos;
