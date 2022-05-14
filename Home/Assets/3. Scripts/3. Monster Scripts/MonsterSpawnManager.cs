@@ -16,21 +16,12 @@ public class MonsterSpawnManager : MonoBehaviour
     private List<GameObject> monsterList = new List<GameObject>();
     tracks track;
 
-    bool MonCheck = false;
 
     void Start()
     {
         area = GetComponent<BoxCollider2D>();
+        StartCoroutine("Spawn", SpawnTime);
         track = GetComponent<tracks>();
-        
-    }
-
-    private void Update()
-    {
-        if(!MonCheck)
-        {
-            StartCoroutine("Spawn", SpawnTime);
-        }
     }
 
     private IEnumerator Spawn(float delyTime)
@@ -44,15 +35,17 @@ public class MonsterSpawnManager : MonoBehaviour
             monsterList.Add(instance);
         }*/
         Vector3 spawnPos = GetRandomPosition();
+        
 
+        
         GameObject instance = Instantiate(monster, spawnPos, Quaternion.identity);
         monsterList.Add(instance);
+        
 
-        MonCheck = true;
         area.enabled = false;
         yield return new WaitForSeconds(delyTime);
 
-        MonCheck = false;
+        
         area.enabled = true;
         StartCoroutine("Spawn", SpawnTime);
     }
