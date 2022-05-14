@@ -8,7 +8,7 @@ public class Monster : MonoBehaviour
     Rigidbody2D rigid;
     Transform target;
     Animator anim;
-    public SpriteRenderer spriteRenderer;
+    SpriteRenderer spriteRenderer;
     
 
     [Header("추격 속도")]
@@ -71,14 +71,8 @@ public class Monster : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            spriteRenderer.color = new Color(0, 0, 0, 255);
             follow = true;
             anim.SetBool("IsWalking", true);
-        }
-
-        if(collision.gameObject.tag == "Light")
-        {
-            spriteRenderer.color = new Color(255, 255, 255, 255);
         }
     }
 
@@ -88,11 +82,6 @@ public class Monster : MonoBehaviour
         {
             follow = false;
             anim.SetBool("IsWalking", false);
-        }
-
-        if (collision.gameObject.tag == "Light")
-        {
-            spriteRenderer.color = new Color(0, 0, 0, 255);
         }
     }
 }
