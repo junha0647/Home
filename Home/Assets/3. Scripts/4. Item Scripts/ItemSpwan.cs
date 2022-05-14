@@ -9,7 +9,7 @@ public class ItemSpwan : MonoBehaviour
     [Header("스폰 시간")]
     public float SpawnTime = 5;
     [Header("아이템 체크")]
-    [SerializeField] private bool Check = false;
+    public bool ItemCheck = false;
     [Header("생성 범위")]
     private BoxCollider2D area;
     [Header("생성 배열")]
@@ -25,7 +25,7 @@ public class ItemSpwan : MonoBehaviour
 
     private void Update()
     {
-        if(!Check)
+        if(!ItemCheck)
         {
             StartCoroutine("Spawn", SpawnTime);
         }
@@ -38,13 +38,18 @@ public class ItemSpwan : MonoBehaviour
 
         GameObject instance = Instantiate(Item, spawnPos, Quaternion.identity);
         ItemList.Add(instance);
-        Check = true;
+        ItemCheck = true;
         area.enabled = false;
         
         yield return new WaitForSeconds(delyTime);
         
         
         
+    }
+
+    public bool ItemChecks(bool item)
+    {
+        return ItemCheck = item;
     }
 
     

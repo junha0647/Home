@@ -4,39 +4,46 @@ using UnityEngine;
 
 public class tracks : MonoBehaviour
 {
-    Transform Ply_target;
-    Transform Trc_target;
-    //ItemSpwan Item;
-    
-
-    public bool trackCheck = true;
-    public Quaternion rot;
+    SpriteRenderer spr;
+    public bool doll;
+    public bool trac;
     
 
     void Start()
     {
-        Ply_target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        Trc_target = GameObject.FindGameObjectWithTag("Item").GetComponent<Transform>();
-        //Item = GetComponent<ItemSpwan>();
+        spr = GetComponent<SpriteRenderer>();
         
     }
 
     
     void Update()
     { 
-        Distance_Dir();
+        
         
     }
 
-    public Quaternion Distance_Dir()
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Vector2 len = Trc_target.transform.position - Ply_target.transform.position;
-        float z = Mathf.Atan2(len.y, len.x) * Mathf.Rad2Deg;
-              
-        rot = Quaternion.Euler(0, 0, z - 90);
-        return rot;
+        if(collision.gameObject.tag == "Light")
+        {
+            spr.enabled = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Light")
+        {
+            if (trac)
+            {
+                Destroy(this.gameObject);
+            }else if(doll)
+            {
+                spr.enabled = false;
+            }
+        }
     }
 
 
-  
 }

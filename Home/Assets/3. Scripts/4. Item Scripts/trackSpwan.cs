@@ -19,12 +19,13 @@ public class trackSpwan : MonoBehaviour
     private List<GameObject> trackList = new List<GameObject>();
     public Quaternion rot;
     private Vector2 len;
+    ItemSpwan item;
 
     private bool check = false;
 
     void Start()
     {
-        
+        item = GetComponent<ItemSpwan>();
         area = GetComponent<BoxCollider2D>(); 
     }
 
@@ -32,7 +33,11 @@ public class trackSpwan : MonoBehaviour
     {
         Ply_target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         Trc_target = GameObject.FindGameObjectWithTag("Item").GetComponent<Transform>();
+        len = Trc_target.transform.position - Ply_target.transform.position;
+
         Distance_Dir();
+        
+        
         if(!check)
         {
             StartCoroutine("Spawn", SpawnTime);
@@ -66,7 +71,7 @@ public class trackSpwan : MonoBehaviour
 
     public Quaternion Distance_Dir()
     {
-        len = Trc_target.transform.position - Ply_target.transform.position;
+        
         float z = Mathf.Atan2(len.y, len.x) * Mathf.Rad2Deg;
 
         rot = Quaternion.Euler(0, 0, z - 90);

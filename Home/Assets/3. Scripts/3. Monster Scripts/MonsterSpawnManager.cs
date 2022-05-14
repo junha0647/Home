@@ -14,35 +14,30 @@ public class MonsterSpawnManager : MonoBehaviour
     private BoxCollider2D area;
     [Header("생성 배열")]
     private List<GameObject> monsterList = new List<GameObject>();
-    tracks track;
+    
+    
 
     bool MonCheck = false;
 
     void Start()
     {
         area = GetComponent<BoxCollider2D>();
-        track = GetComponent<tracks>();
         
     }
 
     private void Update()
     {
-        if(!MonCheck)
+        if (!MonCheck)
         {
             StartCoroutine("Spawn", SpawnTime);
         }
+        
     }
 
     private IEnumerator Spawn(float delyTime)
     {
-        /*
-        for(int i = 0; i < count; i++)
-        {
-            Vector3 spawnPos = GetRandomPosition();
-
-            GameObject instance = Instantiate(monster, spawnPos, Quaternion.identity);
-            monsterList.Add(instance);
-        }*/
+        
+        
         Vector3 spawnPos = GetRandomPosition();
 
         GameObject instance = Instantiate(monster, spawnPos, Quaternion.identity);
@@ -69,4 +64,7 @@ public class MonsterSpawnManager : MonoBehaviour
 
         return spawnPos;
     }
+
+    
+
 }
