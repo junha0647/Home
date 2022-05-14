@@ -20,7 +20,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Move();
+        if(isDie != true)
+        {
+            Move();
+        }
+        onDie();
     }
 
     // ¿Ãµø
@@ -73,14 +77,13 @@ public class PlayerController : MonoBehaviour
         rigid.velocity = moveVec * Speed;
     }
 
-
-    [SerializeField] private GameManager GM;
     [SerializeField] private HP hp;
+    [SerializeField] private Hint hint;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Trace")
         {
-            GM.traceNum++;
+            hint.getHint();
             Destroy(collision.gameObject);
         }
         else if(collision.gameObject.tag == "Enemy")
@@ -88,6 +91,15 @@ public class PlayerController : MonoBehaviour
             hp.HealthDown();
             Destroy(collision.gameObject);
         }
-        
+    }
+
+    bool isDie = false;
+    void onDie()
+    {
+        if(hp.HPValue == 0)
+        {
+            isDie = true;
+            rigid.constraints = RigidbodyConstraints2D.FreezePosition;
+        }
     }
 }

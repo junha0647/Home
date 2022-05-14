@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class PressAnykey : MonoBehaviour
 {
+    [Tooltip("_Sound 오브젝트 받아오기")]
+    [SerializeField] private SoundManager soundManager;
+
     void Start()
     {
         StartCoroutine(offText());
@@ -15,25 +18,18 @@ public class PressAnykey : MonoBehaviour
         // Enter 키를 눌러 게임 시작
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            StartCoroutine(PressAnyKey());
+            soundManager.PlaySound("Enter");
+            StartCoroutine(PressEnter());
         }
     }
 
-    // 아무 키나 누르면 실행되는 동작 방식 //
     [Tooltip("Fade 스크립트 가지고 있는 오브젝트")]
     [SerializeField] private Fade Fade;
-
     [Tooltip("First 오브젝트")]
     [SerializeField] private GameObject st;
-
     [Tooltip("Second 오브젝트")]
     [SerializeField] private GameObject nd;
-    /*
-    [Tooltip("Next 텍스트 오브젝트")]
-    [SerializeField] private GameObject nextBtn;
-    */
-
-    public IEnumerator PressAnyKey()
+    public IEnumerator PressEnter()
     {
         Fade.FadeIn();
 
@@ -42,7 +38,6 @@ public class PressAnykey : MonoBehaviour
         st.SetActive(false);
 
         nd.SetActive(true);
-        //nextBtn.SetActive(true);
     }
     // ================================ //
 
