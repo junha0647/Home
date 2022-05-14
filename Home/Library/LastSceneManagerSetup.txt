@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/1. Scenes/3. Monster Test Scene.unity
+- path: Assets/1. Scenes/2. Game Scene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

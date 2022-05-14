@@ -11,6 +11,9 @@ public class SoundManager : MonoBehaviour
     [Tooltip("ÇÃ·¹ÀÌ¾î Á×À½")]
     [SerializeField] private AudioClip audioDie;
 
+    [Tooltip("¾ÆÀÌÅÛ È¹µæ")]
+    [SerializeField] private AudioClip audioItem;
+
     [Tooltip("Å¸ÀÓ ¿À¹ö")]
     [SerializeField] private AudioClip audioTimeOver;
     [Tooltip("¼Ò³à ½ÇÁ¾")]
@@ -40,6 +43,10 @@ public class SoundManager : MonoBehaviour
             case "DIE":
                 audioSource.clip = audioDie;
                 audioSource.PlayOneShot(audioDie);
+                break;
+            case "Item":
+                audioSource.clip = audioItem;
+                audioSource.PlayOneShot(audioItem);
                 break;
             case "TimeOver":
                 audioSource.clip = audioTimeOver;

@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Hint hint;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Trace")
+        if(collision.gameObject.tag == "Item")
         {
             hint.getHint();
             Destroy(collision.gameObject);

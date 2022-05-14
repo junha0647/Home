@@ -11,8 +11,12 @@ public class Hint : MonoBehaviour
     [Tooltip("레벨")]
     [SerializeField] private Text UILevel;
 
+    [Tooltip("_Sound 오브젝트 받아오기")]
+    [SerializeField] private SoundManager soundManager;
+
     public void getHint()
     {
+        soundManager.PlaySound("Item");
         ++HintValue;
         switch (HintValue)
         {
