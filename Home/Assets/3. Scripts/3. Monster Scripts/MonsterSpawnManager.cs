@@ -7,9 +7,9 @@ public class MonsterSpawnManager : MonoBehaviour
     [Header("스폰 오브젝트")]
     public GameObject monster;
     [Header("스폰 시간")]
-    public float SpawnTime = 5;
-    [Header("생성 갯수")]
-    int count = 10;
+    public float SpawnTime;
+    //[Header("생성 갯수")]
+    //private int count = 10;
     [Header("생성 범위")]
     private BoxCollider2D area;
     [Header("생성 배열")]
@@ -40,15 +40,8 @@ public class MonsterSpawnManager : MonoBehaviour
         area.enabled = false;
         yield return new WaitForSeconds(delyTime);
 
-        /*
-        for(int i = 0; i < count; i++)
-        {
-            Destroy(monsterList[i].gameObject);
-        }
-
-        monsterList.Clear();
+        
         area.enabled = true;
-        */
         StartCoroutine("Spawn", SpawnTime);
     }
 
