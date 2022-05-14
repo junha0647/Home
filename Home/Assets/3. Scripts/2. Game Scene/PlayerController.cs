@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rigid;
     Animator anim;
+    ItemSpwan item;
     float h, v;
     bool isHorizonMove;
 
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        item = GetComponent<ItemSpwan>();
     }
 
     void Update()
@@ -84,6 +86,7 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.tag == "Item")
         {
             hint.getHint();
+            item.ItemChecks(false);
             Destroy(collision.gameObject);
         }
         else if(collision.gameObject.tag == "Enemy")
