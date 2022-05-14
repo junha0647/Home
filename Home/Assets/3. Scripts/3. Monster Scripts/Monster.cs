@@ -17,6 +17,7 @@ public class Monster : MonoBehaviour
     [Header("근접 거리")]
     [SerializeField][Range(0f, 3f)] float contactDistance = 1f;
 
+    private Vector3 dir;
     bool follow = false;
 
     // Start is called before the first frame update
@@ -45,22 +46,35 @@ public class Monster : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
             anim.SetBool("IsWalking", true);
         }
-        else
+        else if(follow == false)
         {
-            //rigidChild.velocity = Vector2.zero;
-            anim.SetBool("IsWalking", false);
+            transform.position = Vector2.MoveTowards(transform.position, target.position, -moveSpeed * Time.deltaTime * 5);
+            //anim.SetBool("IsWalking", true);
+
+            if (dir.x < 0)
+            {
+                spriteRenderer.flipX = true;
+            }
+            else if (dir.x > 0)
+            {
+                spriteRenderer.flipX = false;
+            }
+
+            Destroy(gameObject, 1.5f);
         }
+        
     }
 
     // 애니메이션 전환을 위한 방향 값
     void Dir()
     {
-        Vector3 dir = target.transform.position - transform.position;
+        dir = target.transform.position - transform.position;
         dir.y = 0f;
-        if(dir.x < 0)
+       
+        if(dir.x < 0 && follow)
         {
             spriteRenderer.flipX = false;
-        }else if(dir.x > 0)
+        }else if(dir.x > 0 && follow)
         {
             spriteRenderer.flipX = true;
         }
@@ -79,20 +93,20 @@ public class Monster : MonoBehaviour
         if(collision.gameObject.tag == "Light")
         {
             spriteRenderer.color = new Color(255, 255, 255, 255);
+            follow = false;
+            
         }
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            follow = false;
-            anim.SetBool("IsWalking", false);
-        }
-
+        
+        /*
         if (collision.gameObject.tag == "Light")
         {
             spriteRenderer.color = new Color(0, 0, 0, 255);
-        }
+        }*/
     }
+
+    
 }

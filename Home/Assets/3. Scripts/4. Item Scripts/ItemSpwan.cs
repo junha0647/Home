@@ -20,7 +20,7 @@ public class ItemSpwan : MonoBehaviour
     void Start()
     {
         area = GetComponent<BoxCollider2D>();
-        basePosition = transform.position;
+        
     }
 
     private void Update()
@@ -33,14 +33,7 @@ public class ItemSpwan : MonoBehaviour
 
     private IEnumerator Spawn(float delyTime)
     {
-        /*
-        for(int i = 0; i < count; i++)
-        {
-            Vector3 spawnPos = GetRandomPosition();
-
-            GameObject instance = Instantiate(monster, spawnPos, Quaternion.identity);
-            monsterList.Add(instance);
-        }*/
+        
         Vector3 spawnPos = GetRandomPosition();
 
         GameObject instance = Instantiate(Item, spawnPos, Quaternion.identity);
@@ -50,21 +43,7 @@ public class ItemSpwan : MonoBehaviour
         
         yield return new WaitForSeconds(delyTime);
         
-        /*
-        for(int i = 0; i < count; i++)
-        {
-            Destroy(monsterList[i].gameObject);
-        }
-
-        monsterList.Clear();
-        area.enabled = true;
-        */
-        /*
-        if (Check == false)
-        {
-            StartCoroutine("Spawn", SpawnTime);
-        }
-        */
+        
         
     }
 
@@ -72,7 +51,7 @@ public class ItemSpwan : MonoBehaviour
 
     private Vector2 GetRandomPosition()
     {
-        
+        basePosition = transform.position;
         Vector2 size = area.size;
 
         float posX = basePosition.x + Random.Range(-30f, 30f);

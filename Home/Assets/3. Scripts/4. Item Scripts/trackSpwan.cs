@@ -24,14 +24,14 @@ public class trackSpwan : MonoBehaviour
 
     void Start()
     {
-        Ply_target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        Trc_target = GameObject.FindGameObjectWithTag("Trace").GetComponent<Transform>();
+        
         area = GetComponent<BoxCollider2D>(); 
     }
 
     private void Update()
     {
-        len = Trc_target.transform.position - Ply_target.transform.position;
+        Ply_target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        Trc_target = GameObject.FindGameObjectWithTag("Item").GetComponent<Transform>();
         Distance_Dir();
         if(!check)
         {
@@ -66,7 +66,7 @@ public class trackSpwan : MonoBehaviour
 
     public Quaternion Distance_Dir()
     {
-        
+        len = Trc_target.transform.position - Ply_target.transform.position;
         float z = Mathf.Atan2(len.y, len.x) * Mathf.Rad2Deg;
 
         rot = Quaternion.Euler(0, 0, z - 90);

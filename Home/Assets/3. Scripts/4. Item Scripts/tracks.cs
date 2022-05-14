@@ -16,7 +16,7 @@ public class tracks : MonoBehaviour
     void Start()
     {
         Ply_target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        Trc_target = GameObject.FindGameObjectWithTag("Trace").GetComponent<Transform>();
+        Trc_target = GameObject.FindGameObjectWithTag("Item").GetComponent<Transform>();
         //Item = GetComponent<ItemSpwan>();
         
     }

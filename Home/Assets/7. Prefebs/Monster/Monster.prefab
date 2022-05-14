@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e27da36f3579ee24fb0acf147dff5224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
   moveSpeed: 1
   contactDistance: 1
 --- !u!1 &548858545135656759
@@ -203,4 +204,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1000
+  m_Radius: 50
