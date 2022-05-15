@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClearScene : MonoBehaviour
+public class Credit : MonoBehaviour
 {
     [SerializeField] private Vector3 position;
-    [SerializeField] private float walkSpeed;
+    [SerializeField] private float Speed;
 
     void Start()
     {
@@ -14,7 +14,7 @@ public class ClearScene : MonoBehaviour
 
     void Update()
     {
-        position.x += walkSpeed * Time.deltaTime;
+        position.x -= Speed * Time.deltaTime;
         transform.position = position;
     }
 }

@@ -27,6 +27,7 @@ public class Girl : MonoBehaviour
     }
 
     [SerializeField] private SpriteRenderer sr;
+    [SerializeField] private GameObject fLight;
     IEnumerator lightAlpha()
     {
         for (int i = 9; i >= 0; i--)
@@ -37,6 +38,7 @@ public class Girl : MonoBehaviour
             sr.material.color = c;
             yield return new WaitForSeconds(0.1f);
         }
+        Destroy(fLight);
     }
 
     [Tooltip("페이드인 시킬 오브젝트")]
