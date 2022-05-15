@@ -18,14 +18,12 @@ public class trackSpwan : MonoBehaviour
     private List<GameObject> trackList = new List<GameObject>();
     public Quaternion rot;
     private Vector2 len;
-    int count;
 
-    private bool check = false;
+    public bool check = false;
 
     void Start()
     {
         area = GetComponent<BoxCollider2D>();
-        count = 0;
     }
 
     private void Update()
@@ -41,8 +39,7 @@ public class trackSpwan : MonoBehaviour
         {
             StartCoroutine("Spawn", SpawnTime);
         }
-        
-        
+
     }
 
     private IEnumerator Spawn(float delyTime)
@@ -53,18 +50,14 @@ public class trackSpwan : MonoBehaviour
         GameObject instance = Instantiate(tracked, spawnPos, rot);
         trackList.Add(instance);
         check = true;
-        count++;
-
-
+        //Debug.Log("¹ß»ý¼º");
+        yield return new WaitForSeconds(1f);
         area.enabled = false;
         yield return new WaitForSeconds(delyTime);
-        if(count == 2)
-        {
-            Init();
-        }
+        
 
         area.enabled = true;
-        StartCoroutine("Spawn", SpawnTime);
+        check = false;
     }
 
     public Quaternion Distance_Dir()
@@ -76,28 +69,18 @@ public class trackSpwan : MonoBehaviour
         return rot;
     }
 
-    
-
-    private void Init()
-    {  
-        for (int i = 0; i < count; i++)
-        {
-             Destroy(trackList[i].gameObject);
-        }
-         count = 0;
-         trackList.Clear();
-    }
 
     private Vector2 GetRandomPosition()
     {
         Vector2 basePosition = Ply_target.transform.position;
         Vector2 size = area.size;
 
-        float posX = basePosition.x + Random.Range(-size.x / 2f, size.x / 2f);
-        float posY = basePosition.y + Random.Range(-size.y / 2f, size.y / 2f);
+        float posX = basePosition.x + Random.Range(-size.x / 4f, size.x / 4f);
+        float posY = basePosition.y + Random.Range(-size.y / 4f, size.y / 4f);
 
         Vector2 spawnPos = new Vector2(posX, posY);
-
+        
         return spawnPos;
     }
+
 }

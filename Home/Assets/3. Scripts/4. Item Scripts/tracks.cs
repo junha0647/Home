@@ -6,8 +6,10 @@ public class tracks : MonoBehaviour
 {
     SpriteRenderer spr;
     ItemSpwan item;
+
     public bool doll;
     public bool trac;
+
     
 
     void Start()
@@ -51,12 +53,12 @@ public class tracks : MonoBehaviour
         {
             if (doll)
             {
-                Debug.Log("삭제");
+                //Debug.Log("인형삭제");
                 Destroy(this.gameObject);
             }
             if (trac)
             {
-                Debug.Log("삭제");
+                //Debug.Log("발삭제");
                 Destroy(this.gameObject);
             }
         }
@@ -69,17 +71,30 @@ public class tracks : MonoBehaviour
         {
             if (doll)
             {
-                Debug.Log("삭제");
+                //Debug.Log("인형삭제");
                 Destroy(this.gameObject);
             }
+
             if (trac)
             {
-                Debug.Log("삭제");
+                //Debug.Log("발삭제");
                 Destroy(this.gameObject);
             }
         }
     }
 
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Spawn")
+        {
+            if (trac)
+            {
+                //Debug.Log("발삭제");
+                Destroy(this.gameObject);
+            }
+        }
+    }
 
 
 }

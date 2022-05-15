@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+    [Tooltip("움직임")]
+    [SerializeField] private AudioClip audioWalk;
+
     [Tooltip("첫 번째 데미지 입음")]
     [SerializeField] private AudioClip audioHit1;
     [Tooltip("두 번째 데미지 입음")]
@@ -32,6 +35,10 @@ public class SoundManager : MonoBehaviour
     {
         switch(action)
         {
+            case "Walk":
+                audioSource.clip = audioWalk;
+                audioSource.Play();
+                break;
             case "HIT1":
                 audioSource.clip = audioHit1;
                 audioSource.PlayOneShot(audioHit1);
@@ -59,6 +66,17 @@ public class SoundManager : MonoBehaviour
             case "Enter":
                 audioSource.clip = audioEnter;
                 audioSource.PlayOneShot(audioEnter);
+                break;
+        }
+    }
+
+    public void StopSound(string action)
+    {
+        switch (action)
+        {
+            case "Walk":
+                audioSource.clip = audioWalk;
+                audioSource.Stop();
                 break;
         }
     }

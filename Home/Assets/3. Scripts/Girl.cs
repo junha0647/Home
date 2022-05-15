@@ -38,12 +38,15 @@ public class Girl : MonoBehaviour
     [SerializeField] private SpriteRenderer flashSR;
     [SerializeField] private GameObject arrow;
     [SerializeField] private GirlSpwan GirlSpawn;
+    [SerializeField] private GameObject trackObj;
+
     IEnumerator Save()
     {
         StartCoroutine(lightAlpha());
         flashSR.enabled = false;
         spawner.SetActive(false);
         arrow.SetActive(false);
+        trackObj.SetActive(false);
         yield return new WaitForSeconds(1f);
         StartCoroutine(alphaUP());
         yield return new WaitForSeconds(2f);

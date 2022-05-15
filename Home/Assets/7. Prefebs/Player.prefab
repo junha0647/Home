@@ -11,13 +11,14 @@ GameObject:
   - component: {fileID: 709249416}
   - component: {fileID: 709249418}
   - component: {fileID: 709249417}
+  - component: {fileID: 792331202}
   m_Layer: 9
-  m_Name: ItemSpawn
-  m_TagString: Untagged
+  m_Name: trackSpawn
+  m_TagString: Spawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &709249416
 Transform:
   m_ObjectHideFlags: 0
@@ -42,7 +43,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -56,7 +57,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 28, y: 18}
+  m_Size: {x: 12, y: 10}
   m_EdgeRadius: 0
 --- !u!114 &709249417
 MonoBehaviour:
@@ -71,8 +72,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tracked: {fileID: 2021079619939300243, guid: 4bcfc8d533501114cb416e673814a8ac, type: 3}
-  SpawnTime: 20
+  SpawnTime: 5
   rot: {x: 0, y: 0, z: 0, w: 0}
+  check: 0
+--- !u!50 &792331202
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709249415}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1110720461
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,11 +206,11 @@ GameObject:
   - component: {fileID: 2867970485240184684}
   m_Layer: 9
   m_Name: MonsterSpawn
-  m_TagString: Untagged
+  m_TagString: Spawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2867970485240184685
 Transform:
   m_ObjectHideFlags: 0
@@ -226,7 +249,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 28, y: 18}
+  m_Size: {x: 18, y: 10}
   m_EdgeRadius: 0
 --- !u!114 &2867970485240184684
 MonoBehaviour:
@@ -346,6 +369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 5
+  soundManager: {fileID: 0}
   hp: {fileID: 0}
   hint: {fileID: 0}
 --- !u!50 &2867970485737880946
@@ -379,7 +403,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -502,7 +526,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

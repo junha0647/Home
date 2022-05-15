@@ -53,7 +53,7 @@ public class ItemSpwan : MonoBehaviour
     {
         if (ItemList[i] == null)
         {
-            Debug.Log(i);
+            //Debug.Log(i);
             i++;
             ItemCheck = false;
         }
@@ -79,6 +79,4 @@ public class ItemSpwan : MonoBehaviour
 
         return spawnPos;
     }
-
-    
 }
