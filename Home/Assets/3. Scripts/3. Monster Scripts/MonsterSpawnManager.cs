@@ -62,18 +62,31 @@ public class MonsterSpawnManager : MonoBehaviour
         if(hint.GetValue() >= 2)
         {
             mon.GetSpeed(2f);
+            SpawnTime = 5f;
         }
-        else if(hint.GetValue() >= 4)
+
+        if(hint.GetValue() >= 4)
         {
             mon.GetSpeed(3f);
+            SpawnTime = 4f;
         }
-        else if (hint.GetValue() >= 6)
+
+        if (hint.GetValue() >= 6)
         {
             mon.GetSpeed(4f);
+            SpawnTime = 3f;
         }
-        else if (hint.GetValue() >= 8)
+
+        if (hint.GetValue() >= 8)
         {
             mon.GetSpeed(5f);
+            SpawnTime = 2f;
+        }
+
+        if (hint.GetValue() == 10)
+        {
+            mon.GetSpeed(7f);
+            SpawnTime = 1f;
         }
     }
 

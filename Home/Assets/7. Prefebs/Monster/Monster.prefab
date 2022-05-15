@@ -156,8 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
-  hint: {fileID: 0}
-  moveSpeed: 2
+  moveSpeed: 1
   contactDistance: 1
 --- !u!1 &548858545135656759
 GameObject:

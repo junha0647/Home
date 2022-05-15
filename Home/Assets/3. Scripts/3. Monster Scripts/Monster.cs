@@ -9,7 +9,7 @@ public class Monster : MonoBehaviour
     Transform target;
     Animator anim;
     public SpriteRenderer spriteRenderer;
-    public Hint hint;
+
     
 
     [Header("추격 속도")]

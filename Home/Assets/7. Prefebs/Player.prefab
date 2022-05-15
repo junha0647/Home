@@ -265,6 +265,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monster: {fileID: 548858544050051796, guid: 37afb7ab7ad7cc44a863fd9e4840e9f5, type: 3}
   SpawnTime: 5
+  hint: {fileID: 0}
+  mon: {fileID: 548858544050051795, guid: 37afb7ab7ad7cc44a863fd9e4840e9f5, type: 3}
 --- !u!1 &2867970485737880958
 GameObject:
   m_ObjectHideFlags: 0

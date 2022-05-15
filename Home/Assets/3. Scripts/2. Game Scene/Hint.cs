@@ -19,6 +19,9 @@ public class Hint : MonoBehaviour
     [Tooltip("아이 스폰 오브젝트 받아오기")]
     [SerializeField] private GameObject Girlobj;
 
+    [SerializeField] private GameObject trackSpawn;
+    [SerializeField] private GameObject itemSpawn;
+
     public void getHint()
     {
         soundManager.PlaySound("Item");
@@ -69,6 +72,9 @@ public class Hint : MonoBehaviour
                 UIHint[HintValue - 1].SetActive(true);
                 Arrow.SetActive(true);
                 Girlobj.SetActive(true);
+
+                trackSpawn.SetActive(false);
+                itemSpawn.SetActive(false);
                 break;
         }
     }
