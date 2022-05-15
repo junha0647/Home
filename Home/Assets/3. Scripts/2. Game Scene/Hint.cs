@@ -11,8 +11,20 @@ public class Hint : MonoBehaviour
     [Tooltip("레벨")]
     [SerializeField] private Text UILevel;
 
+    [Tooltip("_Sound 오브젝트 받아오기")]
+    [SerializeField] private SoundManager soundManager;
+
+    [Tooltip("Arrow 오브젝트 받아오기")]
+    [SerializeField] private GameObject Arrow;
+    [Tooltip("아이 스폰 오브젝트 받아오기")]
+    [SerializeField] private GameObject Girlobj;
+
+    [SerializeField] private GameObject trackSpawn;
+    [SerializeField] private GameObject itemSpawn;
+
     public void getHint()
     {
+        soundManager.PlaySound("Item");
         ++HintValue;
         switch (HintValue)
         {
@@ -58,8 +70,17 @@ public class Hint : MonoBehaviour
 
             case 10:
                 UIHint[HintValue - 1].SetActive(true);
-                // 플레이어 머리 위에 아이를 가리키는 화살표 생성
+                Arrow.SetActive(true);
+                Girlobj.SetActive(true);
+
+                trackSpawn.SetActive(false);
+                itemSpawn.SetActive(false);
                 break;
         }
+    }
+
+    public int GetValue()
+    {
+        return HintValue;
     }
 }

@@ -4,39 +4,97 @@ using UnityEngine;
 
 public class tracks : MonoBehaviour
 {
-    Transform Ply_target;
-    Transform Trc_target;
-    //ItemSpwan Item;
-    
+    SpriteRenderer spr;
+    ItemSpwan item;
 
-    public bool trackCheck = true;
-    public Quaternion rot;
+    public bool doll;
+    public bool trac;
+
     
 
     void Start()
     {
-        Ply_target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        Trc_target = GameObject.FindGameObjectWithTag("Trace").GetComponent<Transform>();
-        //Item = GetComponent<ItemSpwan>();
-        
+        spr = GetComponent<SpriteRenderer>();
+        item = GetComponent<ItemSpwan>();
     }
 
-    
-    void Update()
-    { 
-        Distance_Dir();
-        
-    }
 
-    public Quaternion Distance_Dir()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Vector2 len = Trc_target.transform.position - Ply_target.transform.position;
-        float z = Mathf.Atan2(len.y, len.x) * Mathf.Rad2Deg;
-              
-        rot = Quaternion.Euler(0, 0, z - 90);
-        return rot;
+        if(collision.gameObject.tag == "Light")
+        {
+            spr.enabled = true;
+        }
+
+        if (collision.gameObject.tag == "Player")
+        {
+            if (doll)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Light")
+        {
+            if (trac)
+            {
+                Destroy(this.gameObject);
+            }
+            else if(doll)
+            {
+                spr.enabled = false;
+            }
+        }
+
+        if (collision.gameObject.tag == "Tile")
+        {
+            if (doll)
+            {
+                //Debug.Log("인형삭제");
+                Destroy(this.gameObject);
+            }
+            if (trac)
+            {
+                //Debug.Log("발삭제");
+                Destroy(this.gameObject);
+            }
+        }
+
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Tile")
+        {
+            if (doll)
+            {
+                //Debug.Log("인형삭제");
+                Destroy(this.gameObject);
+            }
+
+            if (trac)
+            {
+                //Debug.Log("발삭제");
+                Destroy(this.gameObject);
+            }
+        }
     }
 
 
-  
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Spawn")
+        {
+            if (trac)
+            {
+                //Debug.Log("발삭제");
+                Destroy(this.gameObject);
+            }
+        }
+    }
+
+
 }

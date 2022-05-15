@@ -9,8 +9,11 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rigid;
     Animator anim;
+
     float h, v;
     bool isHorizonMove;
+
+    [SerializeField] private SoundManager soundManager;
 
     void Awake()
     {
@@ -20,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(isDie != true)
+        if (isDie != true)
         {
             Move();
         }
@@ -45,14 +48,17 @@ public class PlayerController : MonoBehaviour
         if (hDown)
         {
             isHorizonMove = true;
+            soundManager.PlaySound("Walk");
         }
         else if (vDown)
         {
             isHorizonMove = false;
+            soundManager.PlaySound("Walk");
         }
         else if (hUp || vUp)
         {
             isHorizonMove = h != 0;
+            soundManager.StopSound("Walk");
         }
 
         // 애니메이션
@@ -81,22 +87,27 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Hint hint;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Trace")
+        if (collision.gameObject.tag == "Item")
         {
             hint.getHint();
-            Destroy(collision.gameObject);
         }
-        else if(collision.gameObject.tag == "Enemy")
+        else if (collision.gameObject.tag == "Enemy")
         {
             hp.HealthDown();
             Destroy(collision.gameObject);
         }
     }
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Tile")
+        {
+            Debug.Log("총돌");
+        }
+    }
     bool isDie = false;
     void onDie()
     {
-        if(hp.HPValue == 0)
+        if (hp.HPValue == 0)
         {
             isDie = true;
             rigid.constraints = RigidbodyConstraints2D.FreezePosition;
