@@ -16,8 +16,8 @@ public class Hint : MonoBehaviour
 
     [Tooltip("Arrow 오브젝트 받아오기")]
     [SerializeField] private GameObject Arrow;
-    [Tooltip("아이 오브젝트 받아오기")]
-    [SerializeField] private GameObject obj;
+    [Tooltip("아이 스폰 오브젝트 받아오기")]
+    [SerializeField] private GameObject Girlobj;
 
     public void getHint()
     {
@@ -68,7 +68,7 @@ public class Hint : MonoBehaviour
             case 10:
                 UIHint[HintValue - 1].SetActive(true);
                 Arrow.SetActive(true);
-                obj.SetActive(true);
+                Girlobj.SetActive(true);
                 break;
         }
     }

@@ -19,6 +19,7 @@ public class Monster : MonoBehaviour
 
     private Vector3 dir;
     bool follow = false;
+    bool Die;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,7 @@ public class Monster : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        
+        Die = false;
     }
 
     // Update is called once per frame
@@ -46,9 +47,9 @@ public class Monster : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
             anim.SetBool("IsWalking", true);
         }
-        if(follow == false)
+        if(follow == false && Die)
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, -moveSpeed * Time.deltaTime * 5);
+            transform.position = Vector2.MoveTowards(transform.position, target.position, -moveSpeed * Time.deltaTime * 5f);
             //anim.SetBool("IsWalking", true);
 
             if (dir.x < 0)
@@ -94,19 +95,10 @@ public class Monster : MonoBehaviour
         {
             spriteRenderer.color = new Color(255, 255, 255, 255);
             follow = false;
-            
+            Die = true;
         }
     }
-
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        
-        /*
-        if (collision.gameObject.tag == "Light")
-        {
-            spriteRenderer.color = new Color(0, 0, 0, 255);
-        }*/
-    }
+  
 
     
 }

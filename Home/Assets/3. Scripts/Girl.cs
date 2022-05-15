@@ -6,14 +6,38 @@ using UnityEngine.SceneManagement;
 
 public class Girl : MonoBehaviour
 {
-    void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        StartCoroutine(Save());
+        if (collision.gameObject.tag == "Player")
+        {
+            StartCoroutine(Save());
+        }
+            
+        if (collision.gameObject.tag == "Tile")
+        {
+            Debug.Log("¿Ãµø Ω√≈¥");
+            //GirlSpawn.GetComponent<GirlSpwan>().GetRandomPosition();
+            GirlSpawn.Spawn();
+        }
     }
+
+    /*
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Tile")
+        {
+            Debug.Log("¿Ãµø Ω√≈¥");
+            GirlSpawn.GetComponent<GirlSpwan>().GetRandomPosition();
+            GirlSpawn.GetComponent<GirlSpwan>().Spawn();
+        }
+    }*/
+
+
 
     [SerializeField] private GameObject spawner;
     [SerializeField] private SpriteRenderer flashSR;
     [SerializeField] private GameObject arrow;
+    [SerializeField] private GirlSpwan GirlSpawn;
     IEnumerator Save()
     {
         StartCoroutine(lightAlpha());
@@ -58,4 +82,5 @@ public class Girl : MonoBehaviour
         }
         yield return null;
     }
+
 }
