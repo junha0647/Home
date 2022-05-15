@@ -57,8 +57,8 @@ public class MonsterSpawnManager : MonoBehaviour
         Vector2 basePosition = transform.position;
         Vector2 size = area.size;
 
-        float posX = basePosition.x + Random.Range(-size.x / 2f, size.x / 2f);
-        float posY = basePosition.y + Random.Range(-size.y / 2f, size.y / 2f);
+        float posX = basePosition.x + Random.Range(-size.x / 3f, size.x / 3f);
+        float posY = basePosition.y + Random.Range(-size.y / 3f, size.y / 3f);
 
         Vector2 spawnPos = new Vector2(posX, posY);
 

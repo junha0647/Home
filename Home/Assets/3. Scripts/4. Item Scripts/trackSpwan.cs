@@ -11,22 +11,21 @@ public class trackSpwan : MonoBehaviour
     public GameObject tracked;
     [Header("스폰 시간")]
     public float SpawnTime;
-    //[Header("생성 갯수")]
-    //private int count = 10;
+    
     [Header("생성 범위")]
     private BoxCollider2D area;
     [Header("생성 배열")]
     private List<GameObject> trackList = new List<GameObject>();
     public Quaternion rot;
     private Vector2 len;
-    ItemSpwan item;
+    int count;
 
     private bool check = false;
 
     void Start()
     {
-        item = GetComponent<ItemSpwan>();
-        area = GetComponent<BoxCollider2D>(); 
+        area = GetComponent<BoxCollider2D>();
+        count = 0;
     }
 
     private void Update()
@@ -36,34 +35,33 @@ public class trackSpwan : MonoBehaviour
         len = Trc_target.transform.position - Ply_target.transform.position;
 
         Distance_Dir();
+
         
-        
-        if(!check)
+        if (!check)
         {
             StartCoroutine("Spawn", SpawnTime);
         }
+        
+        
     }
 
     private IEnumerator Spawn(float delyTime)
     {
-        /*
-        for(int i = 0; i < count; i++)
-        {
-            Vector3 spawnPos = GetRandomPosition();
-
-            GameObject instance = Instantiate(monster, spawnPos, Quaternion.identity);
-            monsterList.Add(instance);
-        }*/
+        
         Vector3 spawnPos = GetRandomPosition();
         
         GameObject instance = Instantiate(tracked, spawnPos, rot);
         trackList.Add(instance);
-        check = true;     
+        check = true;
+        count++;
 
 
         area.enabled = false;
         yield return new WaitForSeconds(delyTime);
-
+        if(count == 2)
+        {
+            Init();
+        }
 
         area.enabled = true;
         StartCoroutine("Spawn", SpawnTime);
@@ -76,6 +74,18 @@ public class trackSpwan : MonoBehaviour
 
         rot = Quaternion.Euler(0, 0, z - 90);
         return rot;
+    }
+
+    
+
+    private void Init()
+    {  
+        for (int i = 0; i < count; i++)
+        {
+             Destroy(trackList[i].gameObject);
+        }
+         count = 0;
+         trackList.Clear();
     }
 
     private Vector2 GetRandomPosition()

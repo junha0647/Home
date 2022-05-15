@@ -9,15 +9,16 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rigid;
     Animator anim;
-    ItemSpwan item;
+ 
     float h, v;
     bool isHorizonMove;
+    
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        item = GetComponent<ItemSpwan>();
+        //item = GetComponent<ItemSpwan>();
     }
 
     void Update()
@@ -84,10 +85,8 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Item")
-        {
+        { 
             hint.getHint();
-            item.ItemChecks(false);
-            Destroy(collision.gameObject);
         }
         else if(collision.gameObject.tag == "Enemy")
         {
@@ -95,7 +94,13 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Tile")
+        {
+            Debug.Log("รัตน");
+        }
+    }
     bool isDie = false;
     void onDie()
     {
