@@ -16,6 +16,8 @@ public class MonsterSpawnManager : MonoBehaviour
     private List<GameObject> monsterList = new List<GameObject>();
     Transform Ply_target;
 
+    public Hint hint;
+    public Monster mon;
 
     bool MonCheck = false;
 
@@ -33,8 +35,8 @@ public class MonsterSpawnManager : MonoBehaviour
         {
             StartCoroutine("Spawn", SpawnTime);
         }
-
-        //random = Random.Range(0, 2);
+        Dif();
+        
     }
 
     private IEnumerator Spawn(float delyTime)
@@ -53,6 +55,26 @@ public class MonsterSpawnManager : MonoBehaviour
         MonCheck = false;
         area.enabled = true;
         StartCoroutine("Spawn", SpawnTime);
+    }
+
+    public void Dif()
+    {
+        if(hint.GetValue() >= 2)
+        {
+            mon.GetSpeed(2f);
+        }
+        else if(hint.GetValue() >= 4)
+        {
+            mon.GetSpeed(3f);
+        }
+        else if (hint.GetValue() >= 6)
+        {
+            mon.GetSpeed(4f);
+        }
+        else if (hint.GetValue() >= 8)
+        {
+            mon.GetSpeed(5f);
+        }
     }
 
     float posX, posY;

@@ -9,6 +9,7 @@ public class Monster : MonoBehaviour
     Transform target;
     Animator anim;
     public SpriteRenderer spriteRenderer;
+    public Hint hint;
     
 
     [Header("추격 속도")]
@@ -64,6 +65,12 @@ public class Monster : MonoBehaviour
             Destroy(gameObject, 1.5f);
         }
         
+    }
+
+    public float GetSpeed(float a)
+    {
+        moveSpeed = a;
+        return moveSpeed;
     }
 
     // 애니메이션 전환을 위한 방향 값

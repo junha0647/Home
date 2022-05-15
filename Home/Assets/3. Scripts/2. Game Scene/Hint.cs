@@ -72,4 +72,9 @@ public class Hint : MonoBehaviour
                 break;
         }
     }
+
+    public int GetValue()
+    {
+        return HintValue;
+    }
 }
